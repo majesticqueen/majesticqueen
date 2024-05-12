@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Advanced Form Validation Example</title>
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <span id="usernameError"></span><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <span id="emailError"></span><br>
+
+    <label for="number">Number:</label>
+    <input type="text" id="number" required>
+    <span id="numberError"></span><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <span id="passwordError"></span><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" required>
+    <span id="confirmPasswordError"></span><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var number = document.getElementById("number").value.trim();
+        var password = document.getElementById("password").value.trim();
+        var confirmPassword = document.getElementById("confirmPassword").value.trim();
+        var usernameError = document.getElementById("usernameError");
+        var emailError = document.getElementById("emailError");
+        var numberError = document.getElementById("numberError");
+        var passwordError = document.getElementById("passwordError");
+        var confirmPasswordError = document.getElementById("confirmPasswordError");
+        var isValid = true;
+
+        // Validate username
+        if (!username.match(/^[a-zA-Z0-9_]{3,}$/)) {
+            usernameError.textContent = "Username must be at least 3 characters long and can only contain letters, numbers, and underscores";
+            isValid = false;
+        } else {
+            usernameError.textContent = "";
+        }
+
+        // Validate email
+        if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+            emailError.textContent = "Invalid email address!";
+            isValid = false;
+        } else {
+            emailError.textContent = "";
+        }
+
+        //Validate Number
+        if(isNaN(number)){
+            numberError.textContent = "Enter numeric value only.";
+            isValid = false;
+        } else {
+            numberError.textContent = "";
+        }
+
+        // Validate password
+        if (password.length < 6) {
+            passwordError.textContent = "Password must be at least 6 characters long";
+            isValid = false;
+        } else {
+            passwordError.textContent = "";
+        }
+
+        // Validate confirm password
+        if (confirmPassword !== password) {
+            confirmPasswordError.textContent = "Passwords do not match!";
+            isValid = false;
+        } else {
+            confirmPasswordError.textContent = "";
+        }
+
+        return isValid;
+    }
+</script>
+
+</body>
+</html>

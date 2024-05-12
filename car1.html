@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<title>car information</title>
+</head>
+<body>
+<h1>Car info</h1>
+<button onclick="displaycarinfo()">display</button>
+
+<script>
+const car = {
+make:"toyota",
+model:"camry",
+year:2022,
+color:"silver",
+displayinfo:function(){
+alert("car information:\n make:" + this.make + "\n model:" + this.model + "\n year:" + this.year + "\n color:" + this.color);
+}
+};
+function displaycarinfo(){
+car.displayinfo();
+}
+</script>
+</body>
+</html>

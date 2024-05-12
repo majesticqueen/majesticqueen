@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <input type="number"  id="number" placeholder="Enter a number">
+    <button onclick="generateMultiplicationTable()">Generate multiplication table</button>
+    <div id="table"></div>
+
+    <script>
+        function generateMultiplicationTable(){
+            const number = parseInt(document.getElementById("number").value);
+            let tableHtml = document.getElementById("table");
+
+            tableHtml.innerHTML = "Multiplication table of " + number + "<br/>";
+            for(let i=1;i<=10;i++){
+                tableHtml.innerHTML += number + " x " + i + " = " + number * i + "<br/>";
+            }
+        }
+    </script>
+</body>
+</html>
